@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta content="text/html" charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+<body>
+
+<h1> Send to app 2 </h1>
+
+<div th:object="${order}">
+    <h4 th:text="'Name:' + ${order.name}"></h4>
+    <h4 th:text="'Type:' + ${order.type}"></h4>
+    <h4 th:if="${order.volume != null}" th:text="'Volume:' + ${order.volume} + ml"></h4>
+    <h4 th:if="${order.count != null}" th:text="'Count:' + ${order.count}"></h4>
+</div>
+
+</body>
