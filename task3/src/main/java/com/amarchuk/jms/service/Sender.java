@@ -3,6 +3,7 @@ import com.amarchuk.jms.model.Item;
 import com.amarchuk.jms.model.Order;
 import com.amarchuk.jms.model.Type;
 import com.amarchuk.jms.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,10 @@ import java.util.Scanner;
 @Component
 public class Sender {
 
-    public void makeOrder(JmsTemplate jmsTemplate ) {
+    @Autowired
+    JmsTemplate jmsTemplate;
+
+    public void makeOrder( ) {
 
         System.out.println("Input your data for continue making the order.\n");
         Scanner in = new Scanner(System.in);

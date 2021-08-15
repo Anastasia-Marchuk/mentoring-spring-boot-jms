@@ -1,0 +1,7 @@
+/home/anastasia/EpamMentoringProgram/mentoring-spring-boot-jms/task1/src/main/java/com/amarchuk/jms/Application1.java
+/home/anastasia/EpamMentoringProgram/mentoring-spring-boot-jms/task1/src/main/java/com/amarchuk/jms/model/Type.java
+/home/anastasia/EpamMentoringProgram/mentoring-spring-boot-jms/task1/src/main/java/com/amarchuk/jms/service/Sender.java
+/home/anastasia/EpamMentoringProgram/mentoring-spring-boot-jms/task1/src/main/java/com/amarchuk/jms/model/Item.java
+/home/anastasia/EpamMentoringProgram/mentoring-spring-boot-jms/task1/src/main/java/com/amarchuk/jms/model/User.java
+/home/anastasia/EpamMentoringProgram/mentoring-spring-boot-jms/task1/src/main/java/com/amarchuk/jms/model/Order.java
+/home/anastasia/EpamMentoringProgram/mentoring-spring-boot-jms/task1/src/main/java/com/amarchuk/jms/config/ConfigJMS.java

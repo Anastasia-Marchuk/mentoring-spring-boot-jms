@@ -1,0 +1,8 @@
+com/amarchuk/jms/Application2.class
+com/amarchuk/jms/service/Sender.class
+com/amarchuk/jms/model/Type.class
+com/amarchuk/jms/model/Item.class
+com/amarchuk/jms/service/Receiver.class
+com/amarchuk/jms/model/User.class
+com/amarchuk/jms/model/Order.class
+com/amarchuk/jms/config/ConfigJMS.class

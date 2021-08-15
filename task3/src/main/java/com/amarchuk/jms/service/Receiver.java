@@ -32,7 +32,7 @@ public class Receiver {
             selector = "selector = 'confirmed'")
     public void receiveHigh(Order order) {
         LOGGER.info("received confirmed order='{}'", order);
-        writeOrderToFile("confirmed_order",order);
+//        writeOrderToFile("confirmed_order",order);
         latch.countDown();
     }
 
@@ -40,17 +40,17 @@ public class Receiver {
             selector = "selector = 'failed'")
     public void receiveLow(Order order) {
         LOGGER.info("rejected order='{}'", order);
-        writeOrderToFile("rejected_order",order);
+//        writeOrderToFile("rejected_order",order);
         latch.countDown();
     }
 
-    private void writeOrderToFile(String fileName, Order order) {
-        File file = new File("/home/anastasia/EpamMentoringProgram/examples/stacy/mentoring-spring-boot-jms/task3/src/main/resources/" + fileName);
-        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(file.getAbsolutePath()))) {
-            writer.write(format("%s%n", order));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
+//    private void writeOrderToFile(String fileName, Order order) {
+//        File file = new File("/home/anastasia/EpamMentoringProgram/mentoring-spring-boot-jms/task3/src/main/resources/" + fileName);
+//        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(file.getAbsolutePath()))) {
+//            writer.write(format("%s%n", order));
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
+//    }
 
 }

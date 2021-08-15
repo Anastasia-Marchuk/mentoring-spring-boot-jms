@@ -1,1 +1,1 @@
-Order{id=1, user=User{name='fdf', lastname='hgfh'}, item=Item{name='item', volume=150, type=LIQUID_ML}}
+Order{id=1, user=User{name='fgh', lastname='jl'}, item=Item{name='item', volume=15, type=LIQUID_ML}}
