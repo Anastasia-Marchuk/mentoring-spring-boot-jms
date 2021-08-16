@@ -10,6 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>task3_extra</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>task3_sender</module>
+        <module>task3_receiver</module>
+    </modules>
 
 
     <dependencies>
@@ -45,7 +50,7 @@
                 </executions>
                 <configuration>
                     <addResources>true</addResources>
-                    <mainClass>com.amarchuk.jms.extra.Application3_extra</mainClass>
+                    <mainClass>Application3_extra</mainClass>
                 </configuration>
             </plugin>
         </plugins>

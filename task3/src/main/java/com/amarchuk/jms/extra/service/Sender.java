@@ -8,6 +8,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class Sender {
@@ -18,7 +19,7 @@ public class Sender {
     private static final String ORDER_QUEUE = "order.confirmed.task3";
     private static final String ORDER_QUEUE_REJECTED = "order.rejected.task3";
 
-    public void makeOrder( ) {
+    public void makeOrder( ) throws InterruptedException {
 
         System.out.println("Input your data for continue making the order.\n");
         Scanner in = new Scanner(System.in);
@@ -49,11 +50,12 @@ public class Sender {
         } else{
             sender.send(ORDER_QUEUE, order, true, jmsTemplate);
         }
+        Thread.sleep(5000);
 
     }
 
     public void send(String destination, Order message,
-                     boolean isConfirmed, JmsTemplate jmsTemplate) {
+                     boolean isConfirmed, JmsTemplate jmsTemplate) throws InterruptedException {
 
         if (isConfirmed) {
             jmsTemplate.convertAndSend(destination, message,
@@ -72,7 +74,7 @@ public class Sender {
         }
     }
 
-    public static Order orderLiquids(User user, Scanner in, JmsTemplate jmsTemplate) {
+    public static Order orderLiquids(User user, Scanner in, JmsTemplate jmsTemplate) throws InterruptedException {
         System.out.print("What value do you want? Write value in ml:");
         int value = in.nextInt();
         double price = value * 3;
