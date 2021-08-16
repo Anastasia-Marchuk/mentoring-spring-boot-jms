@@ -19,8 +19,8 @@ public class Send {
 
         ConfigurableApplicationContext context = SpringApplication.run(Send.class, args);
         Sender sender = context.getBean(Sender.class);
-//        while (true) {
+        while (true) {
             sender.makeOrder();
-//        }
+        }
     }
 }

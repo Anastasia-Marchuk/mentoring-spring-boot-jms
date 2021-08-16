@@ -30,7 +30,7 @@ public class ConfigJMS {
                                                     DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
-        connectionFactory.setClientId("2");
+        connectionFactory.setClientId("amarchuk");
         factory.setSubscriptionDurable(true);
         return factory;
     }

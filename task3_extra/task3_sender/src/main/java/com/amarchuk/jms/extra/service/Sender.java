@@ -14,7 +14,7 @@ public class Sender {
 
     @Autowired
     JmsTemplate jmsTemplate;
-
+    Scanner in = new Scanner(System.in);
 
     private static final String TOPIC = "topic.test";
 
@@ -22,7 +22,6 @@ public class Sender {
     public void makeOrder( ) {
 
         System.out.println("Input your data for continue making the order.\n");
-        Scanner in = new Scanner(System.in);
         System.out.print("Input name: \n");
         String name = in.nextLine();
         System.out.print("Input lastname: \n");
@@ -35,20 +34,16 @@ public class Sender {
         Item item = null;
         Order order = null;
         if (type == 1) {
-            order = orderLiquids(user, in, jmsTemplate);
+            order = orderLiquids(user, in);
         }
         if (type == 2) {
-            order = orderItems(user, in, jmsTemplate);
+            order = orderItems(user, in);
         }
-        in.close();
-
         jmsTemplate.convertAndSend(TOPIC, order);
-
     }
 
 
-
-    public static Order orderLiquids(User user, Scanner in, JmsTemplate jmsTemplate) {
+    public static Order orderLiquids(User user, Scanner in) {
         System.out.print("What value do you want? Write value in ml:");
         int value = in.nextInt();
         double price = value * 3;
@@ -57,7 +52,7 @@ public class Sender {
         return order;
     }
 
-    public static Order orderItems(User user, Scanner in, JmsTemplate jmsTemplate) {
+    public static Order orderItems(User user, Scanner in ) {
         System.out.print("What number of items do you want?\n");
         int value = in.nextInt();
         double price = value * 5.5;

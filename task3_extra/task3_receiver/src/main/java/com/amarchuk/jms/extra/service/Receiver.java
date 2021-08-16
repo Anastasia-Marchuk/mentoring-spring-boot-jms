@@ -29,5 +29,4 @@ public class Receiver {
         LOGGER.info("received confirmed order='{}'", order);
     }
 
-
 }

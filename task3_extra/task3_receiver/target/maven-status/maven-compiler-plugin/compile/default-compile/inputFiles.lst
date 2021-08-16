@@ -1,3 +1,4 @@
+/home/anastasia/EpamMentoringProgram/mentoring-spring-boot-jms/task3_extra/task3_receiver/src/main/java/com/amarchuk/jms/extra/service/SomeHandler.java
 /home/anastasia/EpamMentoringProgram/mentoring-spring-boot-jms/task3_extra/task3_receiver/src/main/java/com/amarchuk/jms/extra/model/Order.java
 /home/anastasia/EpamMentoringProgram/mentoring-spring-boot-jms/task3_extra/task3_receiver/src/main/java/com/amarchuk/jms/extra/config/ConfigJMS.java
 /home/anastasia/EpamMentoringProgram/mentoring-spring-boot-jms/task3_extra/task3_receiver/src/main/java/com/amarchuk/jms/extra/service/Receiver.java
