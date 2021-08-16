@@ -45,7 +45,7 @@
                 </executions>
                 <configuration>
                     <addResources>true</addResources>
-                    <mainClass>com.amarchuk.jms.Application2</mainClass>
+                    <mainClass>com.amarchuk.jms.extra.Application2</mainClass>
                 </configuration>
             </plugin>
         </plugins>
