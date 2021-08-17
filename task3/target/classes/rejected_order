@@ -1,0 +1,1 @@
+Order{id=1, user=User{name='', lastname='kl'}, item=Item{name='item', volume=7777, type=COUNTABLE_NUMBER}}

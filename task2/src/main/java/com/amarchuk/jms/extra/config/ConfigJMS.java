@@ -31,18 +31,8 @@ public class ConfigJMS {
     public JmsListenerContainerFactory<?> myFactory(ConnectionFactory connectionFactory,
                                                     DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-        // This provides all boot's default to this factory, including the message converter
         configurer.configure(factory, connectionFactory);
         return factory;
     }
 
-//    @Bean
-//    public JmsListenerContainerFactory<?> myFactory(SingleConnectionFactory connectionFactory,
-//                                                    DefaultJmsListenerContainerFactoryConfigurer configurer) {
-//        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-//        configurer.configure(factory, connectionFactory);
-//        connectionFactory.setClientId("1");
-//        factory.setSubscriptionDurable(true);
-//        return factory;
-//    }
 }

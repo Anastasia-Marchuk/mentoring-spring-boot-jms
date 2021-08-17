@@ -8,21 +8,20 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 @Component
 public class Sender {
 
     @Autowired
     JmsTemplate jmsTemplate;
+    Scanner in = new Scanner(System.in);
 
     private static final String ORDER_QUEUE = "order.confirmed.task3";
     private static final String ORDER_QUEUE_REJECTED = "order.rejected.task3";
 
-    public void makeOrder( ) throws InterruptedException {
+    public void makeOrder( ) {
 
         System.out.println("Input your data for continue making the order.\n");
-        Scanner in = new Scanner(System.in);
         System.out.print("Input name: \n");
         String name = in.nextLine();
         System.out.print("Input lastname: \n");
@@ -35,27 +34,25 @@ public class Sender {
         Item item = null;
         Order order = null;
         if (type == 1) {
-            order = orderLiquids(user, in, jmsTemplate);
+            order = orderLiquids(user, in);
         }
         if (type == 2) {
-            order = orderItems(user, in, jmsTemplate);
+            order = orderItems(user, in);
         }
-        in.close();
 
 
-        boolean isOk=checkOrder(order,jmsTemplate);
+        boolean isOk=checkOrder(order);
         Sender sender=new Sender();
         if(!isOk){
             sender.send(ORDER_QUEUE_REJECTED, order, false, jmsTemplate);
         } else{
             sender.send(ORDER_QUEUE, order, true, jmsTemplate);
         }
-        Thread.sleep(5000);
 
     }
 
     public void send(String destination, Order message,
-                     boolean isConfirmed, JmsTemplate jmsTemplate) throws InterruptedException {
+                     boolean isConfirmed, JmsTemplate jmsTemplate)  {
 
         if (isConfirmed) {
             jmsTemplate.convertAndSend(destination, message,
@@ -74,7 +71,7 @@ public class Sender {
         }
     }
 
-    public static Order orderLiquids(User user, Scanner in, JmsTemplate jmsTemplate) throws InterruptedException {
+    public static Order orderLiquids(User user, Scanner in )   {
         System.out.print("What value do you want? Write value in ml:");
         int value = in.nextInt();
         double price = value * 3;
@@ -83,7 +80,7 @@ public class Sender {
         return order;
     }
 
-    public static Order orderItems(User user, Scanner in, JmsTemplate jmsTemplate) {
+    public static Order orderItems(User user, Scanner in) {
         System.out.print("What number of items do you want?\n");
         int value = in.nextInt();
         double price = value * 5.5;
@@ -93,7 +90,7 @@ public class Sender {
 
     }
 
-    public static boolean checkOrder(Order order, JmsTemplate jmsTemplate) {
+    public static boolean checkOrder(Order order) {
         if (order.getItem().getVolume() > 800 && order.getItem().getType() == Type.LIQUID_ML ||
                 order.getItem().getVolume() > 10 && order.getItem().getType() == Type.COUNTABLE_NUMBER) {
             System.out.println("Sorry. You can't make the order on more then 3000 ml(or 10 items) without registration");

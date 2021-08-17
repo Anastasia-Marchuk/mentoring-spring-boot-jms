@@ -11,6 +11,7 @@ public class Receiver {
 
     @JmsListener(destination = ORDER_QUEUE, containerFactory = "myFactory")
     public void receiveMessage(Order order ) {
+
         System.out.println("Confirmed order<" + order + ">");
     }
 

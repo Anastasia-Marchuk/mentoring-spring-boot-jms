@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 
+import javax.jms.DeliveryMode;
 import java.util.Scanner;
 
 @Component
@@ -27,11 +28,11 @@ public class Sender {
         System.out.print("Input lastname: \n");
         String lastname = in.nextLine();
         User user = new User(name, lastname);
+//        jmsTemplate.convertAndSend(TOPIC, user);
 
         System.out.print("Liquids or countable item? Choose a number: \n1.liquids\n2.countable\n");
         int type = in.nextInt();
-        int value;
-        Item item = null;
+
         Order order = null;
         if (type == 1) {
             order = orderLiquids(user, in);
@@ -39,6 +40,7 @@ public class Sender {
         if (type == 2) {
             order = orderItems(user, in);
         }
+        jmsTemplate.setDeliveryMode(DeliveryMode.PERSISTENT);
         jmsTemplate.convertAndSend(TOPIC, order);
     }
 

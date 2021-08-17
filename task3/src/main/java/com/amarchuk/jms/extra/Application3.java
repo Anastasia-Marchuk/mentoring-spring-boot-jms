@@ -7,8 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Import;
 
-import java.util.concurrent.TimeUnit;
-
 
 @SpringBootApplication
 @Import(ConfigJMS.class)
@@ -16,11 +14,12 @@ public class Application3 {
 
 
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args){
 
         ConfigurableApplicationContext context = SpringApplication.run(Application3.class, args);
         Sender sender = context.getBean(Sender.class);
-        sender.makeOrder();
-
+        while(true) {
+            sender.makeOrder();
+        }
     }
 }
